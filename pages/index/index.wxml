@@ -1,0 +1,2 @@
+<!--index.wxml-->
+<normalform formInfo="{{formInfo}}" curdata="{{curdata}}" color="#"  bindformSubmit="formSubmit"></normalform>

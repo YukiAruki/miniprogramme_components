@@ -1,0 +1,53 @@
+<!--components/normalform/normalform.wxml-->
+<view class="formconatiner">
+  <form catchsubmit="formSubmit">
+    <view wx:for="{{formInfo}}" wx:key="index">
+      <!-- radio -->
+      <view class="underline" wx:if="{{item.formtype == 'radio'}}">
+        <view class="wehx-custom_title">{{item.name}}</view>
+        <radio-group class="groupbox" bindchange="checkchange" data-id="{{item.val}}">
+          <view wx:for="{{item.radioInfo}}" wx:for-item="radioObj">
+            <radio class="endmar" color="{{color}}" value="{{radioObj.value}}" checked="{{radioObj.checked}}">{{radioObj.name}}</radio>
+          </view>
+        </radio-group>
+      </view>
+      <!-- checkbox -->
+      <view class="underline" wx:if="{{item.formtype == 'checkbox'}}">
+        <view class="wehx-custom_title">{{item.name}}</view>
+        <checkbox-group class="groupbox" bindchange="checkchange" data-id="{{item.val}}">
+          <checkbox class="endmar" color="{{color}}" wx:for="{{item.box}}" wx:for-item="box" wx:key="index" value="{{box.value}}" checked="{{box.checked}}">{{box.name}} </checkbox>
+        </checkbox-group>
+      </view>
+      <!-- input输入框 -->
+      <!-- 最大值 maxlen；类型可选 type；password可选;curval为当前值;place为placeholder -->
+      <view class="underline" wx:if="{{item.formtype == 'input'}}">
+        <view class="wehx-custom_title">
+          {{item.name}}
+        </view>
+        <view class="input-content">
+          <input data-id="{{item.val}}" maxlength="{{item.maxlen? item.maxlen : 10}}" type="{{item.type? item.type: 'text'}}" password="{{item.password? item.password: false}}" disabled="{{item.disabled?item.disabled:false}}" placeholder="{{item.place}}" bindinput="pickerchange" value="{{item.curval}}" />
+        </view>
+      </view>
+      <!-- picker -->
+      <view wx:if="{{item.formtype == 'picker'}}" class="underline">
+        <view class="wehx-custom_title">{{item.name}}</view>
+        <picker wx:if="{{item.mode == null}}" data-id="{{item.val}}" bindchange="singlepicker" value="{{item.curval}}" range="{{item.array}}">
+          <view class="picker">
+            {{item.array[item.curindex]}}
+          </view>
+        </picker>
+        <picker wx:if="{{item.mode == 'time' || item.mode == 'date'}}" data-id="{{item.val}}" mode="{{item.mode}}" value="{{item.curval}}" start="{{item.start}}" end="{{item.end}}" bindchange="pickerchange">
+          <view class="picker">
+            {{item.curval}}
+          </view>
+        </picker>
+        <picker wx:if="{{item.mode == 'region'}}" mode="region" data-id="{{item.val}}" bindchange="pickerchange" value="{{item.curval}}">
+          <view class="picker">
+            {{item.curval[0]}}，{{item.curval[1]}}，{{item.curval[2]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <button form-type="submit" class="confirmbtn" style="background-color: {{color}};" type="primary">提交</button>
+  </form>
+</view>

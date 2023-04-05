@@ -1,0 +1,51 @@
+/* components/normalform/normalform.wxss */
+.formconatiner {
+  display: flex;
+  flex-direction: column;
+  margin: 30rpx;
+  font-size: 30rpx;
+}
+
+/* checkbox & radio-group样式 */
+.groupbox {
+  margin-top: 10rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 间隔符号 */
+.endmar{
+  margin-right: 50rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 分割线 */
+.underline{
+  border-bottom: #f4f4f4 1px solid;
+}
+
+.confirmbtn{
+  margin-top: 40rpx;
+  color:#fff;
+}
+
+/* 标题 */
+.wehx-custom_title {
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  color: #4f4f4f;
+  font-size: 28rpx;
+}
+
+/* picker */
+.picker{
+  margin-bottom: 10rpx;
+}
+
+.input-content{
+  height: 70rpx;
+  font-size:30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
